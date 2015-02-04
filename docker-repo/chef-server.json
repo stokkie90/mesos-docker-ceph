@@ -1,0 +1,17 @@
+{
+	"id": "chef-server",
+	"container": {
+		"type": "DOCKER",
+		"docker": {
+			"image": "cbuisson/chef-server",
+			"network": "BRIDGE",
+			"privileged": true,
+			"portMappings": [
+				{ "containerPort": 443, "hostPort": 0, "servicePort": 443, "protocol": "tcp" }
+			]
+		}
+	},
+	"instances": 1,
+	"cpus": 0.5,
+	"mem": 512
+}

@@ -1,0 +1,22 @@
+{
+	"id": "/docker/registry",
+	"container": {
+		"type": "DOCKER",
+		"docker": {
+			"image": "simpledrupalcloud/registry:dev",
+			"network": "BRIDGE",
+			"portMappings": [
+				{ "containerPort": 80, "hostPort": 0, "servicePort": 5001,"protocol": "tcp" },
+				{ "containerPort": 443, "hostPort": 0, "servicePort": 5002,"protocol": "tcp" }
+			]
+		}
+	},
+	"env": {
+		"USERNAME": "test",
+		"SERVER_NAME": "mesos-master0",
+		"PASSWORD": "test"
+	},
+	"instances": 1,
+	"cpus": 0.5,
+	"mem": 512
+}

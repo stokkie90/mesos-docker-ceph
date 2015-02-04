@@ -1,0 +1,25 @@
+FROM ubuntu:14.04
+MAINTAINER Rick Stokkingreef <rickstokking@gmail.com>
+
+RUN apt-get -q -y update
+RUN apt-get -q -y install software-properties-common wget unzip curl
+
+RUN apt-key adv --keyserver keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
+RUN add-apt-repository 'deb http://repo.percona.com/apt trusty main' 
+RUN apt-get -q -y update
+
+RUN echo percona-xtradb-cluster-server-5.6 percona-xtradb-cluster-server/root_password password <%= @root_password %>
+RUN percona-xtradb-cluster-server-5.6 percona-xtradb-cluster-server/root_password_again password <%= @root_password %>
+
+
+#RUN sed -i '/repo.percona.com/d' /etc/apt/sources.list
+#RUN sh -c 'echo "deb http://repo.percona.com/apt precise main" >> /etc/apt/sources.list'
+#RUN sh -c 'echo "deb-src http://repo.percona.com/apt precise main" >> /etc/apt/sources.list'
+#RUN apt-get -q -y update
+#RUN LC_ALL=en_US.utf8 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::='--force-confnew' -qqy install nano wget psmisc libdbi-perl libdbd-mysql-perl libwrap0 perl libaio1 mysql-client percona-xtrabackup libssl0.9.8 libssl1.0.0 rsync netcat
+#RUN wget --no-check-certificate https://launchpad.net/codership-mysql/5.5/5.5.34-25.9/+download/mysql-server-wsrep-5.5.34-25.9-amd64.deb
+#RUN wget --no-check-certificate https://launchpad.net/galera/2.x/25.2.8/+download/galera-25.2.8-amd64.deb
+#RUN dpkg -i galera-25.2.8-amd64.deb
+#RUN dpkg -i mysql-server-wsrep-5.5.34-25.9-amd64.deb
+#ADD ./my.cnf /etc/mysql/my.cnf
+#EXPOSE 3306 4444 4567 4568

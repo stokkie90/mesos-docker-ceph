@@ -1,0 +1,7 @@
+{
+  "name": "mesos-slave",
+  "description": "Mesos Slave Node, including docker",
+  "run_list": [
+    "recipe[mesos::slave]"
+  ]
+}

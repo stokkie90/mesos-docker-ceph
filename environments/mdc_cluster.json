@@ -1,0 +1,46 @@
+{
+	"name": "mdc_cluster",
+	"description": "CLuster Container Mesos, Doker, Ceph",
+	"cookbook_versions": {
+		
+	},
+	"json_class": "Chef::Environment",
+	"chef_type": "environment",
+	"default_attributes": {
+		"mesos": {
+			"cluster_name": "MDC_cluster",
+			"slave": {
+				"resources": "ports:[3306,4444,4567-4568,31000-32000]"
+			}
+		},
+		"docker": {
+			"use_dev_version": true
+		},
+		"ceph": {
+			"version": "firefly",
+			"osd_devices": {
+				"device": "/dev/sdb"
+			},
+			"config": {
+				"fsid": "6464ac42-bd0c-461c-bbb8-1aaf7550d3fd",
+				"mon_initial_members": "mesos-master0",
+				"global": {
+					"public network": "192.168.42.0/24",
+					"cluster network": "192.168.42.0/24",
+					"osd_pool_default_size": 2,
+					"osd_pool_default_min_size": 1
+				}
+			},
+			"osd": {
+				"auto_prepare": {
+					
+				}
+			},
+			"cephfs_use_fuse": true
+		}
+	},
+	"override_attributes": {
+		
+	}
+	
+}

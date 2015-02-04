@@ -1,0 +1,7 @@
+{
+  "name": "mesos-master",
+  "description": "Mesos Master Node, including zookeeper",
+  "run_list": [
+    "recipe[mesos::master]"
+  ]
+}

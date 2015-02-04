@@ -1,0 +1,5 @@
+.vagrant
+.project
+.buildpath
+.Berksfile.lock
+/tmp
